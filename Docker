@@ -1,0 +1,20 @@
+# Use an official Tomcat 9 image as the base
+FROM tomcat:8
+
+# Remove the default Tomcat webapps
+# RUN rm -rf /usr/local/tomcat/webapps/*
+
+# Set the working directory in the container
+WORKDIR /usr/local/tomcat/webapps/
+
+# Copy your JAR file into the webapps directory of Tomcat
+COPY spring-security-0.0.1-SNAPSHOT.jar
+
+# Expose the port your application runs on
+EXPOSE 8080
+
+# Optionally, you can provide startup commands
+# For example, if you want to start Tomcat directly
+CMD ["catalina.sh", "run"]
+
+
